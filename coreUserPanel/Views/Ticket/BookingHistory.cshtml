@@ -1,0 +1,53 @@
+﻿
+@model coreUserPanel.Models.Bookings
+
+@{
+    ViewData["Title"] = "BookingHistory";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>BookingHistory</h2>
+
+<div>
+    <h4>Bookings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingAmount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookingAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookingDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowTiming)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ShowTiming)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AudiName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AudiName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserDetailId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserDetailId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="BookingDetails" asp-controller="Ticket">BookingDetails</a> |
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>
+

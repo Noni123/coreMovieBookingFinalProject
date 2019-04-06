@@ -1,0 +1,54 @@
+﻿@model coreUserPanel.Models.Movies
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .mar {
+        margin-left: 150px;
+    }
+
+    .pic:hover {
+        transform: scale(1.5);
+    }
+</style>
+<center><h2>Movie Details</h2></center>
+&nbsp;&nbsp;
+<div class="row">
+    <div class="col-md-4">
+        <img src="@Html.DisplayFor(m=>m.MovieImage)" class="bd-placeholder-img " width="100%" height="300" card-img-top" />
+    </div>
+    <div class="col-md-8">
+        &nbsp;&nbsp;
+        <div class="form-group-mar">
+            <label for="MovieId"> MovieId:  </label>
+            @Html.DisplayFor(m => m.MovieId)
+            <br />
+            <label for="MovieName"> MovieName: </label>
+            @Html.DisplayFor(m => m.MovieName)
+            <br />
+            <label for="MoviePrice"> MoviePrice: </label>
+            @Html.DisplayFor(m => m.MoviePrice)
+            <br />
+            <label for="MovieDuration">MovieDuration: </label>
+            @Html.DisplayFor(m => m.MovieDuration)
+            <br />
+            <label for="MovieDescription">MovieDescription:</label>
+            @Html.DisplayFor(m => m.MovieDescription)
+            <br />
+            <label for="MultiplexId"> MultiplexId: </label>
+            @Html.DisplayFor(m => m.MultiplexId)
+            <br />
+            <br />
+        </div>
+    </div>
+</div>
+<br />
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back To List</a>
+    &nbsp;
+<a asp-controller="Booking" asp-action="Book" class="btn btn-info">Book Movie</a>
+
+
+
+

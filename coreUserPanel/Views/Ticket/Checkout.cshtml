@@ -1,0 +1,256 @@
+﻿@model coreUserPanel.Models.UserDetails
+    @{
+        Layout = null;
+    }
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Checkout</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body class="bg-light">
+        <div class="container">
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="" alt="" width="72" height="72">
+                <img src="~/images/images.png" />
+                <br />
+                <h2><b>CHECKOUT FORM</b></h2>
+                <br />
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-md-4 order-md-2 mb-4">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your cart</span>
+                        <span class="badge badge-secondary badge-pill">3</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        @foreach (var item in ViewBag.bookmovie)
+                        {
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">Movie name</h6>
+                                    @item.Movies.MovieName
+                                </div>
+                                <span class="text-muted">
+                                    <h6 class="my-0"> Quantity</h6>
+                                    @item.Quantity
+                                </span>
+                                <span class="text-muted">
+                                    <h6 class="my-0">Movie Price</h6>
+                                    @item.Movies.MoviePrice
+                                </span>
+                            </li>
+                        }
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (INR)</span>
+                            <strong>@ViewBag.total</strong>
+                        </li>
+                    </ul>
+                    <form class="card p-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Promo code">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-secondary">Redeem</button>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">USER DETAIL</h4>
+
+                    <form asp-controller="BookMovie" asp-action="Checkout" method="post" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="userName">User name</label>
+                                <input type="text" asp-for="UserName" class="form-control" placeholder="Username" required>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="username">Username</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"></span>
+                                </div>
+                                <input type="email" asp-for="Email" class="form-control" placeholder="Email" required>
+                                <div class="invalid-feedback" style="width: 100%;">
+                                    Your email is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phonenumber">Phone Number</label>
+                            <input type="text" asp-for="ContactNo" class="form-control" id="phonenumber" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Please enter your valid phone number
+                            </div>
+                        </div>
+
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                        <a  asp-controller="Booking" asp-action="Invoice"class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@{
+    ViewData["Title"] = "Invoice";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="~/css/StyleSheet.css" />
+<script src="~/js/JavaScript.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div id="invoice">
+    <div class="toolbar hidden-print">
+        <div class="text-right">
+            <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
+            <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
+        </div>
+        <hr>
+    </div>
+    <div class="invoice overflow-auto">
+        <div style="min-width: 600px">
+            <header>
+                <div class="row">
+                    <div class="col">
+                        <a target="_blank" href="https://lobianijs.com">
+                            <img src="https://us.123rf.com/450wm/grgroup/grgroup1304/grgroup130400044/18954250-illustration-of-film-icon-movie-popcorn-vector-illustration.jpg?ver=6" alt="Illustration of film icon, movie popcorn, vector illustration Stock Vector - 18954250" />
+                        </a>
+                    </div>
+                    <div class="col company-details">
+                        <h2 class="name">
+                            <a target="_blank" href="https://lobianijs.com">
+                                
+                            </a>
+                        </h2>
+                        @*<div>455 Foggy Heights, AZ 85004, US</div>
+                            <div>(123) 456-789</div>*@
+                        <div>shivanginisaxena20@gmail.com</div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="row contacts">
+                    <div class="col invoice-to">
+                        <div class="text-gray-light">INVOICE TO:</div>
+                        <h2 class="to">Customer Name:@*@ViewBag.UserDetails.UserName*@</h2>
+                        <div class="address">Customer Email:@*@ViewBag.UserDetails.Email*@</div>
+                        <div class="email"> Contact Person:@*@ViewBag.UserDetails.ContactNo*@</div>
+                    </div>
+                    <div class="col invoice-details">
+                        <h1 class="invoice-id">Booking Details</h1>
+                        <div class="date">Date of Invoice: 01/10/2018</div>
+                        <div class="date">Due Date: 30/10/2018</div>
+                    </div>
+                </div>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-left">DESCRIPTION</th>
+                            <th class="text-right">Movie Price</th>
+                            <th class="text-right">Quantity</th>
+                            <th class="text-right">TOTAL</th>
+                        </tr>
+
+
+
+                        @foreach (var item in ViewBag.BookMovie)
+                        {
+                            <tr>
+                                @*<td class="no">04</td>*@
+                                <td>*</td>
+                                <td class="text-left">
+                                    <h3> @item.Movies.MovieName</h3>
+                                </td>
+
+
+                                <td class="qty"><h3>@item.Movies.MoviePrice</h3></td>
+                                <td class="unit"><h3>@item.Quantity</h3></td>
+                                <td class="total">@(item.Movies.MoviePrice * item.Quantity)</td>
+                            </tr>
+                        }
+
+
+
+                        </tbody>
+                    <tfoot>
+                        @*<tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">SUBTOTAL</td>
+                                <td>$5,200.00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">TAX 25%</td>
+                                <td>$1,300.00</td>
+                            </tr>*@
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">GRAND TOTAL</td>
+                            <td>@ViewBag.total</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <br />
+                <br />
+                <div class="thanks">Thank you!</div>
+                <div class="notices">
+                    @*<div>NOTICE:</div>
+                        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>*@
+                </div>
+            </main>
+            <footer>
+                Invoice was created on a computer and is valid without the signature and seal.
+            </footer>
+        </div>
+        <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+        <div></div>
+    </div>
+</div>
+

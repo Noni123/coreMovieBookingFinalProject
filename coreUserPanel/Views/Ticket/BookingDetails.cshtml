@@ -1,0 +1,39 @@
+﻿
+@model coreUserPanel.Models.BookingDetails
+
+@{
+    ViewData["Title"] = "BookingDetails";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>BookingDetails</h2>
+
+<div>
+    <h4>BookingDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QtySeats)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QtySeats)
+        </dd>
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Booking)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Booking.BookingId)
+            </dd>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Movie.MovieName)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+

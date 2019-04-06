@@ -1,0 +1,40 @@
+﻿@model coreUserPanel.Models.UserDetails
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Password)
+            </th>
+                @Html.DisplayNameFor(Model => Model.ContactNo)
+            <th>
+                @Html.DisplayNameFor(Model => Model.UserName)
+            </th>
+           
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(Model => Model.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(Model => Model.Password)
+            </td>
+                @Html.DisplayFor(Model => Model.ContactNo)
+            <td>
+                @Html.DisplayFor(Model => Model.UserName)
+            </td>
+              
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-default" asp-controller="Home" asp-action="Index">Back</a>

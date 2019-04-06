@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Cart</h2>
+
+<table class="table">
+    <tr>
+        <th>Options</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Seats</th>
+        <th>SubTotal</th>
+    </tr>
+    @foreach (var item in ViewBag.bookmovie)
+    {
+        <tr>
+            <td><a asp-controller="booking" asp-action="Remove" asp-route-id="@item.Movies.MovieId">Remove</a></td>
+            <td>@item.Movies.MovieId</td>
+            <td>@item.Movies.MovieName</td>
+            <td><img src="@item.Movies.MovieImage" width="60" /></td>
+            <td>@item.Movies.MoviePrice</td>
+            <td>@(item.Quantity)</td>
+            <td>@(item.Movies.MoviePrice * item.Quantity)</td>
+        </tr>
+    }
+    <tr>
+        <td align="right" colspan="6"><b>Sum</b></td>
+        <td>
+            @ViewBag.total
+        </td>
+    </tr>
+</table>
+
+<hr />
+@*<a asp-controller="" asp-action="Index" class="btn btn-secondary"> Continue Booking</a>*@
+<a asp-controller="Ticket" asp-action="register" class="btn btn-danger">Proceed</a>

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<coreUserPanel.Models.Multiplexes>
+@*@{
+        ViewData["Title"] = "Multiplexes";
+    }
+
+    <h2>Multiplexes</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MultiplexName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MultiplexDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MultiplexImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MultiplexName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MultiplexDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MultiplexImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.LocationId)
+                </td>
+                <td>
+                    <a asp-action="Movies" asp-route-id="@item.MultiplexId">Show Movies</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+
+
+
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<section class="jumbotron text-center">
+    <img src="~/images/image (1).png" />
+    <style type="text/css">
+        body {
+            background-image: url(https://img.freepik.com/free-photo/white-plain-wall-surface-background_53876-74688.jpg?size=626&ext=jpg);
+        }
+    </style>
+    <div class="container">
+        <br />
+        <h1 class="jumbotron-heading">Movie Tickets, Events & Cinemas near Delhi</h1>
+    </div>
+</section>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<br />
+<br>
+
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="@item.MultiplexImage" class="bd-placeholder-img" width="100%" height="300" card-img-top" />
+
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="card-text" style="font-weight:bold;">@item.MultiplexName</p>
+                                &nbsp;
+                                &nbsp;
+
+                                <a asp-controller="Home" asp-action="Movies" asp-route-id="@item.MultiplexId" type="button" class="btn btn-secondary">Select Multiplex</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>

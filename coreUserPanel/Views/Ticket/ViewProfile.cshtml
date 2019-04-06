@@ -1,0 +1,41 @@
+﻿@model coreUserPanel.Models.UserDetails
+
+
+@{
+    ViewData["Title"] = "ViewProfile";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>ViewProfile</h2>
+
+<div>
+    <h4>UserDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+    </dl>
+</div>
+<a asp-action="edit" asp-controller="Ticket" class="btn btn-success"><b> Edit Profile </a>

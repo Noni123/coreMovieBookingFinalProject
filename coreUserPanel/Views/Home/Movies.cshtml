@@ -1,0 +1,92 @@
+﻿@model IEnumerable<coreUserPanel.Models.Movies>
+@*@{
+        ViewData["Title"] = "Movies";
+    }
+
+    <h2>Movies</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MoviePrice)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MoviePrice)
+                    </td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.MovieId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.MovieId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.MovieId">Delete</a>*@
+
+@*<a asp-action="Book" asp-controller="Booking" asp-route-id="@item.MovieId">Add to Cart</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
+
+
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style type="text/css">
+    body {
+        background-image: url(https://img.freepik.com/free-photo/white-plain-wall-surface-background_53876-74688.jpg?size=626&ext=jpg);
+    }
+</style>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="@item.MovieImage" class="bd-placeholder-img" width="100%" height="300" card-img-top" />
+
+                        <div class="card-body">
+                            <p class="card-text" style="font-weight:bold;">@item.MovieName</p>
+
+                            <p class="card-text" style="font-weight:bold;">@item.MovieDescription</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+
+                                    @*<a asp-controller="BookMovie" asp-action="Index" asp-route-id="@item.MovieId" type="button" class="btn btn-sm btn-outline-secondary">Book Movie</a>
+                                        <a asp-controller="BookMovie" asp-action="Details" asp-route-id="@item.MovieId" class="btn btn-sm btn-outline-secondary">View Details</a>*@
+                                    <a asp-controller="Booking" asp-action="Book" asp-route-id="@item.MovieId" class="btn btn-sm btn-outline-secondary">Book Movie</a>
+                                    <a asp-controller="Booking" asp-action="Details" asp-route-id="@item.MovieId" class="btn btn-sm btn-outline-secondary">Details</a>
+
+
+                                </div>
+                                <small class="text-muted">@item.MovieDuration</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
