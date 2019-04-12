@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http;
 @{
     ViewData["Title"] = "Index";
 }
@@ -23,7 +23,9 @@
             <td>@item.Movies.MovieName</td>
             <td><img src="@item.Movies.MovieImage" width="60" /></td>
             <td>@item.Movies.MoviePrice</td>
-            <td>@(item.Quantity)</td>
+            <td> <a class="btn btn-default" asp-controller="Booking" asp-action="Minus" asp-route-id="@item.Movies.MovieId">-</a>@item.Quantity<a class="btn btn-default" asp-controller="Booking" asp-action="Plus" asp-route-id="@item.Movies.MovieId">+</a></td>
+
+
             <td>@(item.Movies.MoviePrice * item.Quantity)</td>
         </tr>
     }
@@ -36,5 +38,48 @@
 </table>
 
 <hr />
-@*<a asp-controller="" asp-action="Index" class="btn btn-secondary"> Continue Booking</a>*@
-<a asp-controller="Ticket" asp-action="register" class="btn btn-danger">Proceed</a>
+
+<a class="btn btn-info" asp-action="Login" asp-controller="Ticket">Proceed</a>
+@*<form id="loginform" class="form-horizontal" asp-action="Login" asp-controller="Ticket" method="post" role="form">
+        <button class="btn btn-info">Proceed</button>
+    </form>*@
+
+
+
+
+
+@*@if (Context.Session.GetString("uname") == null)
+    {
+
+        <html>
+        <head>
+            <script type="text/javascript">
+             <!--
+                function Warn() {
+
+                    alert("Please Sign In ");
+                    //document.write(<a asp-controller="Ticket" asp-action="Register" class="btn btn-secondary">Sign In</a>);
+
+                }
+                //-->
+            </script>
+        </head>
+
+        <body>
+
+
+            <form>
+                <a asp-controller="Ticket" asp-action="Login" type="button" class="btn btn-info" onclick="Warn();">Proceed</a>
+            </form>
+        </body>
+    </html>
+
+
+    }
+    else
+    {
+
+    <a class="btn btn-info" asp-action="Checkout" asp-controller="Ticket">Proceed</a>
+    }*@
+
+

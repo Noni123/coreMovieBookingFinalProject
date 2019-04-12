@@ -16,35 +16,39 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Dashboard</a>
+                        <a class="dropdown-item" asp-action="Index" asp-controller="Home">Location</a>
 
+                    </div>
+                </li>
             </ul>
-            @if (Context.Session.GetString("uname") == null)
+            @if (Context.Session.GetString("uid") == null)
             {
-                <a class="btn btn-info" asp-action="Login" asp-controller="Ticket">Login</a>
+                <a class="btn btn-info" asp-action="DirectLogin" asp-controller="Ticket">Login</a>
 
             }
             else
             {
                 <div>
                     <label class="form-control">
-                        Welcome @Context.Session.GetString("uname")!!
+                        Welcome @Context.Session.GetString("uid")!!
                     </label>
                 </div>
-                @*<Center><a class="btn btn-info" asp-action="Logout" asp-controller="Ticket">Logout</a></Center>*@
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" asp-action="Dashboard" asp-controller="Ticket">Dashboard</a>
-                        <a class="dropdown-item" asp-action="Profile" asp-controller="Ticket">View Profile</a>
+                        <a class="dropdown-item" href="#">Dashboard</a>
+                        <a class="dropdown-item" asp-action="ViewProfile" asp-controller="Ticket">View Profile</a>
                         <a class="dropdown-item" asp-action="ChangePassword" asp-controller="Ticket">Change Password</a>
+                        @*<a class="dropdown-item" asp-action="EditProfile" asp-controller="Ticket">EditProfile</a>
+                            <a class="dropdown-item" asp-action="BookingHistory" asp-controller="Ticket">BookingHistory</a>
+                            <a class="dropdown-item" asp-action="BookingDetails" asp-controller="Ticket">BookingDetails</a>*@
                         <a class="dropdown-item" asp-action="Logout" asp-controller="Ticket">Logout</a>
                     </div>
                 </li>
@@ -52,22 +56,6 @@
             <form class="form-inline my-2 my-lg-0"></form>
 
 
-
-
-
-
-            @*<a asp-controller="Ticket" asp-action="Index" class="btn btn-danger">Sign In</a>*@
-
-            @*<form class="form-inline my-2 my-lg-0">
-                    <label class="form-control">
-                        Welcome @Context.Session.GetString("uname")!!
-                    </label>
-                    &nbsp;
-
-                    <a asp-action="" asp-controller="Account" class="btn btn-secondary my-2 my-sm-0"> Logout</a>
-                    @*<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>*@
         </div>
     </nav>
     <main role="main" class="container">

@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Invoice";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = null;
 }
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -23,18 +23,16 @@
                 <div class="row">
                     <div class="col">
                         <a target="_blank" href="https://lobianijs.com">
-                            <img src="~/images/Image2.png" data-holder-rendered="true" />
+                            <img src="https://bareillytoday.com/wp-content/uploads/2017/10/Top-10-Indias-Best-Online-Movie-Ticket-Booking-Websites-730x410.png" data-holder-rendered="true" />
                         </a>
                     </div>
                     <div class="col company-details">
                         <h2 class="name">
                             <a target="_blank" href="https://lobianijs.com">
-                                Himanika
+                                Sanya
                             </a>
                         </h2>
-                        <div>455 Foggy Heights, AZ 85004, US</div>
-                        <div>(123) 456-789</div>
-                        <div>himanika23chugh.com</div>
+                        <div>sanyasingh097@gmail.com</div>
                     </div>
                 </div>
             </header>
@@ -47,7 +45,7 @@
                         <div class="email"> Contact Person:@ViewBag.UserDetails.ContactNo</div>
                     </div>
                     <div class="col invoice-details">
-                        <h1 class="invoice-id">INVOICE 3-2-1</h1>
+                        <h1 class="invoice-id">INVOICE</h1>
                         <div class="date">Date of Invoice: 01/10/2018</div>
                         <div class="date">Due Date: 30/10/2018</div>
                     </div>
@@ -84,16 +82,7 @@
 
                         </tbody>
                     <tfoot>
-                        @*<tr>
-                                <td colspan="2"></td>
-                                <td colspan="2">SUBTOTAL</td>
-                                <td>$5,200.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"></td>
-                                <td colspan="2">TAX 25%</td>
-                                <td>$1,300.00</td>
-                            </tr>*@
+
                         <tr>
                             <td colspan="1"></td>
                             <td colspan="2">GRAND TOTAL</td>
@@ -105,15 +94,12 @@
                 <br />
                 <div class="thanks">Thank you!</div>
                 <div class="notices">
-                    @*<div>NOTICE:</div>
-                        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>*@
-                </ </main>
-            <footer>
-                Invoice was created on a computer and is valid without the signature and seal.
-            </footer>
+
+                </div>
+            </main>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-dark">Go Back</a>
         </div>
         <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
-        <div></div>div>
-           
+        <div></div>
     </div>
 </div>
